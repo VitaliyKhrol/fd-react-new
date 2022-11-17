@@ -5,8 +5,10 @@
 
 .valid{
     border: 2px solid green;
+    background-color: rgb(193, 252, 233);
 }
 
 .invalid{
-    border: 2px solid green;
+    border: 2px solid red;
+    background-color: lightpink;
 }
