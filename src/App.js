@@ -1,6 +1,9 @@
 import React from "react";
 // import UserDashboard from "./components/UserDashboard";
-import Timer from "./components/Timer";
+// import Timer from "./components/Timer";
+// import LoginForm from "./components/LoginForm";
+// import Scene from "./components/Scene"
+import TodoList from "./components/TodoList"
 
 class App extends React.Component {
   constructor (props){
@@ -11,12 +14,12 @@ class App extends React.Component {
   }
 render () {
     return(
-        <div>
-          {this.state.isOn ? <Timer /> : null}
-          
-        </div>
+        
+        <TodoList />
+        
         ) 
-}   
+
+}
 }
 
 export default App;
