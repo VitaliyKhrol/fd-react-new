@@ -1,11 +1,11 @@
 import React from 'react';
 
-const GridContainer = () => {
+const Container = (props) => {
     return (
-        <div>
-            
+        <div style={{maxWidth:'1200px', textAlign:'center'}}>
+            {props.children}
         </div>
     );
 }
 
-export default GridContainer;
+export default Container;

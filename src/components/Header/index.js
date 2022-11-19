@@ -1,28 +1,14 @@
-// import React from 'react';
-// import style from "./Header/Header.moduler.style.css"
+import React from 'react';
+import styles from "./Header.module.css";
 
-// class Header extends React.Component {
-//     constructor(props){
-//         super(props);
-//         this.state ={
-//             user:{
-//                 firstName: 'Alex',
-//                 lastName: 'Doe',
-//                 avatar
-
-
-//             }
-
-//         }
-//     }
-//     return (
-//         <div>
-//             <img scr="/publik/logo192.png"/>
-//             <div>
-
-//             </div>
-//         </div>
-//     );
-// }
-
-// export default Header;
+function Header (props) {
+      
+    return (
+       
+        <div className={styles.header}>
+            <img src="/logo192.png" className={styles.logo}/>
+            {props.children} 
+        </div>
+    );
+}    
+export default Header;

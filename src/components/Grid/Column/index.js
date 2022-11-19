@@ -1,14 +1,14 @@
 import React from 'react';
-import './Column.css'
+import './Column.css';
 
-const Colum = (props) => {
-    const {colNum, children} = 
-    props;
+const Column = (props) => {
+    const {colNum,children} = props;
+    
     return (
-        <div className={'col col-$ {colNum}'}>
+        <div className={`col col-${colNum}`}>
             {children}  
         </div>
     );
 }
 
-export default Index;
+export default Column;
