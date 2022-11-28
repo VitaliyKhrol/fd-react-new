@@ -1,68 +1,75 @@
-// import React, { Component } from 'react';
-// import { getUsers } from '../../api';
-// import UserCard from "../UserCard";
-// import getUsers from "../../api/index"
-// // import {userData} from "./userData";
-// import './components/UserCard/style.css';
+import React, {Component} from "react";
+import Spiner from '../Spiner';
+import {getUsers} from '../../api';
+import UsersList from "../UsersList"
 
+class UserDashboard extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            users: [],
+            error: null,
+            isFetching: true,
+            page:1
+        }
+    }
 
-// class UserDashboard extends Component {
-//     constructor(props) {
-//         super(props);
-//         this.state = {
-//             users: [],
-//             isSort: true,
-//             error: null,
-//             isFetching:true
-//         }
-//     }
-//     componentDidMount() {
-//         this.getData();
-//     }
+    componentDidMount(){
+        this.getData();
+    }
+    componentDidUpdate(prevProps, prevState){
+        if (prevState.page !== this.state.page){
+            this.getData();}
+        
+    }
 
-//     getData = () => {
-//         getUsers()       
-//             .then(data => {
-//                 this.setState({
-//                     user: data.results,
-//                 })
-//             })
-//             .catch((error)=>{
-//                 this.setState({
-//                     error,
-//                  })
-//             })
-//             .finally(()=>{
-//                 this.setState({
-//                 isFetching: false
-//             })
-//         })
-//     }
+    getData = () => {
+        const {page} = this.state;
+        getUsers({page})
+        .then(data => {
+            this.setState({
+                users: data.results
+            })
+        })
+        .catch((error)=>{
+            this.setState({
+                error
+            })
+        })
+        .finally(()=>{
+            this.setState({
+                isFetching: false
+            })
+        })
+    }
+    next = () => {
+        const {page} = this.state;
+        this.setState({
+            page: page + 1
+        })
+    }
+    prev = () => {
+        const {page} = this.state;
+        if (page > 1) {
+            this.setState({
+                page: page - 1
+            })
+        }
+    }
 
-//     userMap = () => this.state.users.map((userObj) => <UserCard user={userObj} key={userObj.login.uuid} />);
+    render() {
+        const {users, error, isFetching, page} = this.state;
+        return (
+            <section>
+                <button onClick={this.prev}>{'< '}</button>
+                <span> {page} </span>
+                <button onClick={this.next}>{' >'}</button>
+                {error && <div>Oops! Something goes wrong!</div> }
+                {users && <UsersList users ={users}/>}
+                {isFetching && <Spiner />}
 
-//     sortUsers = () => {
-//         const { users, isSort } = this.state;
-//         const newUsers = [...users];
-//         newUsers.sort((a, b) => (a.name > b.name && isSort) ? 1 : -1);
-//         this.setState({
-//             users: newUsers,
-//             isSort: !isSort
-//         })
-//     }
-
-//     render() {
-//         const{user,error} = this.state;
-//         return (
-//             <section>
-//                 <button onClick={this.sortUsers}>Sorted</button>
-//                 {error && <div> OOps! </div>}
-//                 {user && (<div> className="container">
-//                     {this.userMap()}
-//                 }</div>
-//             </section>
-//         )
-//     }
-// }
-
-// export default UserDashboard;
+            </section>
+        );
+    }
+}
+export default UserDashboard;

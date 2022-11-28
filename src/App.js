@@ -1,35 +1,31 @@
 import React from "react";
-// import Container from "./components/Grid/GridContainer";
-// import Column from "./components/Grid/Column";
-// import Row from "./components/Grid/Row";
-// import FlexContainer from "./components/FlexContainer";
-// import styles from './App.module.css';
-import ImageWrapper from './components/ImageWrapper'
-
+import Tree from "./components/Tree";
+import UserContext from "./contexts/UserContext";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.state={
+      user:{
+        firstName:'Jonh',
+        lastName:'Doe',
+        email:'mail@gmail.com',
+        avatar:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnmwWQIrVvOza5_9GSFKoc4yGyeW63v5MTwg&usqp=CAU'
+      }
+    }
   };
-  
+
+logOutCallback =() =>{
+  this.setState({
+    user:{}
+  })
+}
   render() {
+    console.log(UserContext);
     return (
-    <>
-      <ImageWrapper
-        width = '200px'
-        height = '300px'
-        onClick={()=>{console.log('Hello')}}
-        >
-        <img src="https://bipbap.ru/wp-content/uploads/2017/04/0_7c779_5df17311_orig.jpg" width='100%' />
-      </ImageWrapper>
-      <ImageWrapper
-      width = '200px'
-      height = '300px'
-      title = "My super picture"
-        >
-      <img src="https://bipbap.ru/wp-content/uploads/2017/04/0_7c779_5df17311_orig.jpg" width='100%' />
-    </ImageWrapper>
-    </>
+      <UserContext.Provider value= {[this.state.user, this.logOutCallback]}>
+      <Tree/>
+      </UserContext.Provider>
     )
   }
 }
