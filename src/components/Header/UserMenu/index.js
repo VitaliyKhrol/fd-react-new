@@ -1,5 +1,5 @@
 import React from 'react';
-import UserContext from '../../../contexts/UserContext';
+import {withtUser} from '../../../HOCs/withUser'
 
 const UserMenu = (props) => {
     const {user,setUser} = props;
@@ -15,17 +15,7 @@ const UserMenu = (props) => {
                 </div>
         )
     }
-
-    const withtUser = (Component) =>(props)=>{
-    return (
-        <UserContext.Consumer>
-            {([user, setUser]) => {
-                return <Component  user ={user} setUser={setUser}/>  
-                }
-            } 
-        </UserContext.Consumer>
-    );      
-}
+   
 
 const wrappedComponent = withtUser(UserMenu);
 

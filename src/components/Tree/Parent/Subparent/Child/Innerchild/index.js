@@ -1,4 +1,4 @@
-import UserContext from "../../../../../../contexts/UserContext";
+import {withtUser} from '../../../../../../HOCs/withUser'
 
 function Innerchild(props) {
   const { user: { firstName, lastName, avatar }, setUser } = props;
@@ -9,17 +9,6 @@ function Innerchild(props) {
     <button onClick={setUser}>LogOut</button>
   </div>
   )
-}
-
-const withtUser = (Component) =>(props)=>{
-  return (
-      <UserContext.Consumer>
-          {([user, setUser]) => {
-              return <Component  user ={user} setUser={setUser}/>  
-              }
-          } 
-      </UserContext.Consumer>
-  );      
 }
 
 const wrappedComponent = withtUser(Innerchild);
