@@ -16,7 +16,6 @@ const UserMenu = (props) => {
         )
     }
    
-
 const wrappedComponent = withtUser(UserMenu);
 
 export default wrappedComponent;

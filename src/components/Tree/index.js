@@ -2,36 +2,28 @@ import React from "react";
 import Parent from './Parent';
 import styles from './Tree.module.css';
 import cx from 'classnames';
-import ThemeContext from "../../contexts/ThemeContext";
 import CONSTANTS from "../../constants";
-import UserContext from '../../contexts/UserContext'
+import { withtTheme } from "../../HOCs/withTheme";
+import { withtUser } from "../../HOCs/withUser";
 const { THEMES } = CONSTANTS;
 
 function Tree(props) {
-  return (
-    <UserContext.Consumer>
-      {([user,setUser]) => {
-        return (
-          <ThemeContext.Consumer>
-            {([theme, setTheme]) => {
-              const cn = cx(styles.container, {
-                [styles.darkTheme]: theme === THEMES.DARK,
-                [styles.lightTheme]: theme === THEMES.LIGHT
-              })
-              return (
-                <div className={cn}>
-                  <p>{user.firstName}</p>
-                  <p>Tree</p>
-                  <Parent />
-                </div>
-              )
-            }}
-          </ThemeContext.Consumer>
-        )
-      }}
-    </UserContext.Consumer>
-  )
-
+  const{user,setUser,theme,setTheme} = props;  
+  const cn = cx(styles.container, {
+                  [styles.darkTheme]: theme === THEMES.DARK,
+                  [styles.lightTheme]: theme === THEMES.LIGHT
+                })
+                return (
+                  <div className={cn}>
+                    <p>{user.firstName}</p>
+                    <p>Tree</p>
+                    <Parent />
+                  </div>
+                )
 }
 
-export default Tree;
+const TreeWithUser= withtUser(Tree);
+const TreeWithUserWithTheme = withtTheme(TreeWithUser);
+export default TreeWithUserWithTheme;
+
+
