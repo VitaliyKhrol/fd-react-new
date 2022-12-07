@@ -2,10 +2,9 @@ import React from "react";
 import './style.scss';
 import PropTypes from 'prop-types';
 
-class UserCard extends React.Component {
-    
-    render() {
-        const {user: {name: {first, last}, email, picture: {large}}} = this.props;
+function UserCard2 (props) {
+ 
+        const {user: {name: {first, last}, email, picture: {large}}} = props;
         return (
             <div className='card-wrapper'>
                 <div className='image-wrapper'>
@@ -16,11 +15,11 @@ class UserCard extends React.Component {
                 <button>Connect</button>
             </div>
         )
-    }
+    
 }
 
 
-UserCard.defaultProps ={
+UserCard2.defaultProps ={
     user:{
         name:{
             first: 'Anonim',
@@ -34,7 +33,7 @@ UserCard.defaultProps ={
 }
 
 
-UserCard.propTypes ={
+UserCard2.propTypes ={
     name: PropTypes.shape({
         first:PropTypes.string.isRequired,
         last: PropTypes.string.isRequired
@@ -46,4 +45,4 @@ UserCard.propTypes ={
 }.isRequired
 
 
-export default UserCard;
+export default UserCard2;

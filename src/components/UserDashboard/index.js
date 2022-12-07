@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import Spiner from '../Spiner';
-import {getUsers} from '../../api';
+import {getUsers} from '../../api/';
 import UsersList from "../UsersList"
 
 class UserDashboard extends Component {

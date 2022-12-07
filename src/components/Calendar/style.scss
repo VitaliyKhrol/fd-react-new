@@ -1,0 +1,32 @@
+@mixin flex($fd, $jc, $ai) {
+    display: flex;
+    flex-direction: $fd;
+    justify-content: $jc;
+    align-items: $ai;
+}
+@mixin Width-height($w,$h)  {
+    width: $w;
+    height: $h;
+}
+
+.calendar{
+    @include flex(row, center, center);
+    @include Width-height(500px,300px);
+    border: 1px solid red;
+    .calendarBody{
+        @include Width-height(200px,200px);
+        border: 1px solid black;
+       
+        .week{
+
+        }
+        .month{
+           
+        }
+    }
+    .currentDay{
+         @include Width-height(150px,150px);
+            border: 1px solid rgb(87, 213, 238);  
+    }
+    
+}

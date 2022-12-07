@@ -1,0 +1,62 @@
+@mixin flex($fd, $jc, $ai) {
+    display: flex;
+    flex-direction: $fd;
+    justify-content: $jc;
+    align-items: $ai;
+}
+@mixin Width-height($w,$h)  {
+    width: $w;
+    height: $h;
+}
+
+%one-line-ellipsis{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.card-wrapper {
+    margin: 10px;
+    width: 200px;
+    border: 2px solid black;
+    padding: 15px;
+    overflow: hidden;
+    @include flex (column,space-evenly,center);
+    
+    .image-wrapper {
+        @include Width-height(150px,150px);
+        border-radius: 50%;
+        font-size: 5em;
+        color: white;
+        position: relative;
+        @include flex (row,center,center);
+      
+        .avatar {
+            @include Width-height(100%,100%);
+            border-radius: 50%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1;
+        }
+    }
+    .desc {
+      @extend %one-line-ellipsis;
+}
+}
+
+.card-container{ 
+   display: flex;
+     width: 100%;
+     flex-wrap: wrap;
+}
+
+.active {
+    border: 2px solid red;
+  -webkit-box-shadow: 6px 10px 20px 0px rgba(194,192,194,1);
+  -moz-box-shadow: 6px 10px 20px 0px rgba(194,192,194,1);
+  box-shadow: 6px 10px 20px 0px rgba(194,192,194,1);
+  }

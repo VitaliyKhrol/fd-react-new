@@ -1,0 +1,45 @@
+$main-color: blue;
+$sm-screen: 570px;
+
+.header {
+    color: $main-color;
+
+    font: {
+        size: 16px;
+        family: Arial;
+    }
+
+    ;
+
+    transition: {
+        property: all;
+        duration: 0.5s;
+        delay: 1s;
+        timing-function: ease;
+    }
+
+    ;
+
+    >.menu {
+        >ul {
+            >.list-item {
+                color: aqua;
+            }
+        }
+
+        &:hover {
+            background-color: pink;
+        }
+
+        &:before,
+        &:after {
+            content: 'A';
+        }
+
+        @media screen and (max-width: $sm-screen) {
+            & {
+                background-color: green;
+            }
+        }
+    }
+}
