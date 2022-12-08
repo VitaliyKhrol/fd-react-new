@@ -9,6 +9,7 @@ import MouseTracker from "./components/MouseTracker";
 import WindowSizer2 from "./components/WindowSizer2";
 import Timer2 from "./components/Timer2";
 import UserDashboard2 from "./components/UserDashboard2";
+import Tree from './components/Tree';
 
 function App(props){
   const[isVisible,setVisible] = useState(true)

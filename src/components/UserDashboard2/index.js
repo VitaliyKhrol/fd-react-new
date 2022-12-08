@@ -6,12 +6,11 @@ import UsersList2 from "../UsersList2"
 function UserDashboard2() {
     const [users, setUsers] = useState([]);
     const [error, setError] = useState(null);
-    const [isFetching, setisFetching] = useState(true);
+    const [isFetching, setFetching] = useState(true);
     const [page, setPage] = useState(1);
 
     useEffect(() => {
-        console.log(page)
-        getUsers({ page })
+             getUsers({ page })
             .then(data => {
                 setUsers(data.results)
             })
@@ -21,7 +20,7 @@ function UserDashboard2() {
                 )
             })
             .finally(() => {
-                setisFetching(
+                setFetching(
                     false
                 )
             })
