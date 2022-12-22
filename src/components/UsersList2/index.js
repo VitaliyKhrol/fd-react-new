@@ -14,15 +14,13 @@ function UsersList2(props) {
     const userMap = (usersArray) => usersArray.map((userObj) => <UserCard2 user={userObj} key={userObj.login.uuid} />);
 
 
-    // const sortUsers = () => {
-    //     const newUser = [...users];
-    //     console.log(newUser);
-    //     newUser.sort((a, b) => (a.name > b.name && isSort) ? 1 : -1);
-    //     setUser(newUser);
-    //     setSort(!isSort);
-
-
-    // }
+    const sortUsers = () => {
+        const newUsers = [...props.users];
+        console.log(newUsers);
+        newUsers.sort((a, b) => (a.name.first > b.name.first && isSort) ? 1 : -1);
+        props.setUsers(newUsers);
+        setSort(!isSort);
+    }
 
     const changeHandler = ({ target: { value } }) => {
         setFilterValue(value);
@@ -31,7 +29,7 @@ function UsersList2(props) {
    
     return (
         <>
-            {/* <button onClick={sortUsers}>Sorted</button> */}
+            <button onClick={sortUsers}>Sorted</button>
             <input
                 type='text'
                 value={filterValue}

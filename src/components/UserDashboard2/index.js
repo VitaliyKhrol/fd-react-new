@@ -44,7 +44,7 @@ function UserDashboard2() {
             <span> {page} </span>
             <button onClick={next}>{' >'}</button>
             {error && <div>Oops! Something goes wrong!</div>}
-            {users && <UsersList2 users={users} />}
+            {users && <UsersList2 users={users} setUsers={setUsers} />}
             {isFetching && <Spiner />}
 
         </section>
